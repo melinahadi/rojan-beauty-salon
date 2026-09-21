@@ -1,0 +1,39 @@
+@import "tailwindcss";
+html {
+    scroll-behavior: smooth;
+}
+
+@theme {
+    --color-cream: #FBF7F2;
+    --color-cream-2: #F1E6DF;
+    --color-charcoal: #2A2521;
+    --color-charcoal-2: #3D3630;
+    --color-rose: #C17F82;
+    --color-rose-deep: #9C5A5E;
+    --color-gold: #AD8A54;
+    --font-display: "Noto Naskh Arabic", serif;
+    --font-body: "Vazirmatn", sans-serif;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--color-cream);
+    color: var(--color-charcoal);
+    direction: rtl;
+}
+
+
+/* Persian DatePicker */
+
+.admin-datepicker {
+    font-family: var(--font-body);
+}
+
+.admin-datepicker input {
+    background-color: var(--color-cream);
+    font-family: var(--font-body);
+}
+
+.admin-datepicker input::placeholder {
+    font-family: var(--font-body);
+}
