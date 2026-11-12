@@ -14,47 +14,52 @@ import AdminServices from "../pages/admin/AdminServices";
 import AdminStylists from "../pages/admin/AdminStylists";
 import NotFoundPage from "../pages/NotFoundPage";
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      children: [
+        { index: true, element: <HomePage /> },
+        {
+          path: "booking",
+          element: (
+            <RequireAuth>
+              <BookingPage />
+            </RequireAuth>
+          ),
+        },
+        {
+          path: "my-appointments",
+          element: (
+            <RequireAuth>
+              <MyAppointmentsPage />
+            </RequireAuth>
+          ),
+        },
+        { path: "login", element: <LoginPage /> },
+        { path: "forgot-password", element: <ForgotPasswordPage /> },
+        { path: "*", element: <NotFoundPage /> },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <RequireAdmin>
+          <AdminLayout />
+        </RequireAdmin>
+      ),
+      children: [
+        { index: true, element: <AdminDashboard /> },
+        { path: "appointments", element: <AdminAppointments /> },
+        { path: "services", element: <AdminServices /> },
+        { path: "stylists", element: <AdminStylists /> },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    children: [
-      { index: true, element: <HomePage /> },
-      {
-        path: "booking",
-        element: (
-          <RequireAuth>
-            <BookingPage />
-          </RequireAuth>
-        ),
-      },
-      {
-        path: "my-appointments",
-        element: (
-          <RequireAuth>
-            <MyAppointmentsPage />
-          </RequireAuth>
-        ),
-      },
-      { path: "login", element: <LoginPage /> },
-      { path: "forgot-password", element: <ForgotPasswordPage /> },
-      { path: "*", element: <NotFoundPage /> },
-    ],
-  },
-  {
-    path: "/admin",
-    element: (
-      <RequireAdmin>
-        <AdminLayout />
-      </RequireAdmin>
-    ),
-    children: [
-      { index: true, element: <AdminDashboard /> },
-      { path: "appointments", element: <AdminAppointments /> },
-      { path: "services", element: <AdminServices /> },
-      { path: "stylists", element: <AdminStylists /> },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 export default router;
