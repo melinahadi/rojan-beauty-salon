@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
+import heroImage from "../../assets/images/hero/6.webp";
 export default function Hero() {
   return (
     <section
@@ -8,7 +8,7 @@ export default function Hero() {
       className="relative h-[88vh] min-h-[560px] overflow-hidden"
     >
       <motion.img
-        src="src/assets/images/hero/6.webp"
+        src={heroImage}
         alt="فضای داخلی آرایشگاه روژان"
         className="absolute inset-0 w-full h-full object-cover saturate-90 brightness-90"
         style={{ objectPosition: "15% center" }}
@@ -16,6 +16,7 @@ export default function Hero() {
         animate={{ scale: 1.18 }}
         transition={{ duration: 18, ease: "linear" }}
       />
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/20" />
       <div className="absolute inset-y-0 right-0 w-full md:w-3/4 bg-gradient-to-l from-charcoal/80 via-charcoal/40 to-transparent" />
 
@@ -51,6 +52,7 @@ export default function Hero() {
           >
             رزرو آنلاین نوبت
           </Link>
+
           <a
             href="#services"
             className="border border-cream/60 text-cream px-8 py-3.5 text-sm hover:bg-cream/10 hover:border-cream transition-colors"

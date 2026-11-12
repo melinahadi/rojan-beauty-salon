@@ -1,20 +1,24 @@
 import Reveal from "../ui/Reveal";
 
+import stylist1 from "../../assets/images/stylists/1.webp";
+import stylist2 from "../../assets/images/stylists/2.webp";
+import stylist3 from "../../assets/images/stylists/3.webp";
+
 const stylists = [
   {
     name: "نگار احمدی",
     role: "متخصص رنگ و بالیاژ",
-    img: "src/assets/images/stylists/1.webp",
+    img: stylist1,
   },
   {
     name: "سارا مرادی",
     role: "متخصص کوتاهی و فرم",
-    img: "src/assets/images/stylists/2.webp",
+    img: stylist2,
   },
   {
     name: "مریم کریمی",
     role: "متخصص شینیون و عروس",
-    img: "src/assets/images/stylists/3.webp",
+    img: stylist3,
   },
 ];
 
@@ -24,6 +28,7 @@ export default function StylistGrid() {
       <div className="max-w-6xl mx-auto px-8">
         <div className="max-w-xl mb-14">
           <div className="text-rose-deep text-sm mb-3">تیم ما</div>
+
           <h2 className="font-display text-3xl md:text-4xl">
             استایلیست‌هایی که می‌شناسینشون
           </h2>
@@ -40,7 +45,9 @@ export default function StylistGrid() {
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
+
                 <h3 className="text-xl mb-1">{s.name}</h3>
+
                 <span className="text-[13.5px] text-rose-deep">{s.role}</span>
               </div>
             </Reveal>

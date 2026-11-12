@@ -2,29 +2,36 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "../ui/Reveal";
 
+import gallery1 from "../../assets/images/gallery/1.webp";
+import gallery2 from "../../assets/images/gallery/2.webp";
+import gallery3 from "../../assets/images/gallery/3.webp";
+import gallery4 from "../../assets/images/gallery/4.webp";
+import gallery5 from "../../assets/images/gallery/5.webp";
+import gallery6 from "../../assets/images/gallery/6.webp";
+
 const images = [
   {
-    src: "src/assets/images/gallery/1.webp",
+    src: gallery1,
     className: "col-span-2 row-span-3",
   },
   {
-    src: "src/assets/images/gallery/2.webp",
+    src: gallery2,
     className: "col-span-2 row-span-2",
   },
   {
-    src: "src/assets/images/gallery/3.webp",
+    src: gallery3,
     className: "col-span-1 row-span-2",
   },
   {
-    src: "src/assets/images/gallery/4.webp",
+    src: gallery4,
     className: "col-span-1 row-span-1",
   },
   {
-    src: "src/assets/images/gallery/5.webp",
+    src: gallery5,
     className: "col-span-2 row-span-2",
   },
   {
-    src: "src/assets/images/gallery/6.webp",
+    src: gallery6,
     className: "col-span-2 row-span-1",
   },
 ];
@@ -38,6 +45,7 @@ export default function Gallery() {
     const onKeyDown = (e) => {
       if (e.key === "Escape") setSelected(null);
     };
+
     window.addEventListener("keydown", onKeyDown);
     document.body.style.overflow = "hidden";
 
@@ -53,6 +61,7 @@ export default function Gallery() {
         <Reveal>
           <div className="max-w-xl mb-14">
             <div className="text-rose-deep text-sm mb-3">گالری</div>
+
             <h2 className="font-display text-3xl md:text-4xl">
               لحظاتی از فضای روژان
             </h2>

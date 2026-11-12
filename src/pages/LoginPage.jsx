@@ -1,22 +1,26 @@
 import { useState } from "react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+
 import { useAuth } from "../hooks/useAuth";
 import { isValidIranPhone } from "../lib/phoneAuth";
 import SEO from "../components/SEO";
+
+import loginImage from "../assets/images/login/2.webp";
 
 export default function LoginPage() {
   const [mode, setMode] = useState("login");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  // const [recoveryPin, setRecoveryPin] = useState("");
   const [error, setError] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const { signIn, signUp } = useAuth();
+
   const navigate = useNavigate();
   const location = useLocation();
+
   const redirectTo = location.state?.from?.pathname || "/booking";
 
   const handleSubmit = async (e) => {
@@ -27,24 +31,24 @@ export default function LoginPage() {
       setError("شماره موبایل و رمز عبور را وارد کنید.");
       return;
     }
+
     if (!isValidIranPhone(phone)) {
       setError("شماره موبایل معتبر نیست.");
       return;
     }
-    if (mode === "signup" && !fullName) {
+
+    if (mode === "signup" && !fullName.trim()) {
       setError("نام و نام خانوادگی را وارد کنید.");
       return;
     }
-    // if (mode === "signup" && !/^\d{4}$/.test(recoveryPin)) {
-    //   setError("کد بازیابی باید دقیقاً ۴ رقم باشد.");
-    //   return;
-    // }
 
     setSubmitting(true);
+
     const { error } =
       mode === "login"
         ? await signIn(phone, password)
         : await signUp(phone, password, fullName);
+
     setSubmitting(false);
 
     if (error) {
@@ -55,6 +59,7 @@ export default function LoginPage() {
           ? "خطا در ثبت‌نام. شاید این شماره قبلاً ثبت شده."
           : "خطایی رخ داد، دوباره تلاش کنید."
       );
+
       return;
     }
 
@@ -64,15 +69,19 @@ export default function LoginPage() {
   return (
     <section className="min-h-screen grid md:grid-cols-2">
       <SEO title="ورود / ثبت‌نام" />
+
       <div className="relative hidden md:block">
         <img
-          src="src/assets/images/login/2.webp"
+          src={loginImage}
           alt="روژان"
           className="absolute inset-0 w-full h-full object-cover"
         />
+
         <div className="absolute inset-0 bg-charcoal/55" />
+
         <div className="absolute bottom-14 right-10 text-cream max-w-sm">
           <div className="font-display text-3xl mb-3">روژان</div>
+
           <p className="text-cream/80 text-sm leading-relaxed">
             برای رزرو نوبت، ابتدا وارد حساب کاربری‌تان شوید یا در چند ثانیه یک
             حساب جدید بسازید.
@@ -114,6 +123,7 @@ export default function LoginPage() {
               <h1 className="font-display text-2xl mb-1">
                 {mode === "login" ? "خوش برگشتی" : "بساز، تا شروع کنیم"}
               </h1>
+
               <p className="text-charcoal-2 text-sm mb-6">
                 {mode === "login"
                   ? "برای مشاهده و ثبت نوبت وارد شوید."
@@ -147,26 +157,6 @@ export default function LoginPage() {
                 className="w-full border border-charcoal/20 rounded-sm px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-rose-deep transition-colors"
                 dir="ltr"
               />
-
-              {/* {mode === "signup" && (
-                <div>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={4}
-                    placeholder="کد بازیابی ۴ رقمی (برای فراموشی رمز)"
-                    value={recoveryPin}
-                    onChange={(e) =>
-                      setRecoveryPin(e.target.value.replace(/\D/g, ""))
-                    }
-                    className="w-full border border-charcoal/20 rounded-sm px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-rose-deep transition-colors"
-                    dir="ltr"
-                  />
-                  <p className="text-[12px] text-charcoal-2 mt-1.5">
-                    این کد رو جایی یادداشت کن — فقط راه بازیابی رمزته.
-                  </p>
-                </div>
-              )} */}
 
               {error && (
                 <p className="text-[13px] text-red-700 bg-red-50 border border-red-100 rounded-sm px-3 py-2">
