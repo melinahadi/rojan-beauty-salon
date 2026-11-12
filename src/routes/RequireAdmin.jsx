@@ -14,8 +14,21 @@ export default function RequireAdmin({ children }) {
     );
   }
 
+  console.log("ADMIN CHECK:", {
+    user,
+    profile,
+    role: profile?.role,
+  });
+
   if (!user) return <Navigate to="/login" replace />;
-  if (profile?.role !== "admin") return <Navigate to="/" replace />;
+
+  if (!profile) {
+    return <div>پروفایل کاربر پیدا نشد.</div>;
+  }
+
+  if (profile.role !== "admin") {
+    return <div>شما دسترسی ادمین ندارید. نقش فعلی: {profile.role}</div>;
+  }
 
   return children;
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -21,6 +22,8 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const [showPassword, setShowPassword] = useState(false);
+  
   const redirectTo = location.state?.from?.pathname || "/booking";
 
   const handleSubmit = async (e) => {
@@ -146,17 +149,34 @@ export default function LoginPage() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 className="w-full border border-charcoal/20 rounded-sm px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-rose-deep transition-colors"
-                dir="ltr"
+                dir="rtl"
               />
 
-              <input
-                type="password"
-                placeholder="رمز عبور"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full border border-charcoal/20 rounded-sm px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-rose-deep transition-colors"
-                dir="ltr"
-              />
+              
+
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="رمز عبور"
+                  className="w-full border border-charcoal/20 rounded-sm px-4 py-3 text-sm bg-transparent focus:outline-none focus:border-rose-deep transition-colors"
+                  
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 transition-colors"
+                  aria-label={
+                    showPassword ? "مخفی کردن رمز عبور" : "نمایش رمز عبور"
+                  }
+                  aria-pressed={showPassword}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
 
               {error && (
                 <p className="text-[13px] text-red-700 bg-red-50 border border-red-100 rounded-sm px-3 py-2">

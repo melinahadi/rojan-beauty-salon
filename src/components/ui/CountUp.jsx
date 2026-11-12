@@ -3,30 +3,38 @@ import { useInView, animate } from "framer-motion";
 
 export default function CountUp({ to, suffix = "", duration = 1 }) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-60px" });
+  const controlsRef = useRef(null);
+
+  const isInView = useInView(ref, {
+    once: true,
+    amount: 0.3,
+  });
+
   const [value, setValue] = useState(0);
-  const valueRef = useRef(0);
 
   useEffect(() => {
-    const from = valueRef.current;
-    const target = isInView ? to : 0;
-    const dur = isInView ? duration : 0.3;
+    if (!isInView) return;
 
-    const controls = animate(from, target, {
-      duration: dur,
+    controlsRef.current?.stop();
+
+    controlsRef.current = animate(0, to, {
+      duration,
       ease: "easeOut",
-      onUpdate: (v) => {
-        valueRef.current = v;
-        setValue(Math.round(v));
+      onUpdate: (latest) => {
+        setValue(Math.round(latest));
       },
     });
 
-    return () => controls.stop();
+    return () => {
+      controlsRef.current?.stop();
+    };
   }, [isInView, to, duration]);
 
   return (
     <span ref={ref}>
-      {value.toLocaleString("fa-IR", { useGrouping: false })}
+      {value.toLocaleString("fa-IR", {
+        useGrouping: false,
+      })}
       {suffix}
     </span>
   );
