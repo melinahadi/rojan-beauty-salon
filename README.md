@@ -1,16 +1,54 @@
-# React + Vite
+# Rojan Beauty Salon
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern and responsive beauty salon website with an online appointment booking system and admin dashboard.
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[View Rojan Beauty Salon](https://melinahadi.github.io/rojan-beauty-salon/)
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Responsive design for mobile, tablet and desktop
+- User registration and login
+- Online appointment booking
+- User appointment management
+- Admin dashboard
+- Appointment management
+- Services management
+- Stylists management
+- Supabase database integration
+- Password recovery
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- JavaScript
+- Vite
+- Tailwind CSS
+- Supabase
+- React Router
+- Framer Motion
+
+## Screenshots
+
+Add screenshots of the homepage, booking page, login page and admin dashboard here.
+
+## Installation
+
+```bash
+git clone https://github.com/melinahadi/rojan-beauty-salon.git
+cd rojan-beauty-salon
+npm install
+```
+
+Create a `.env` file using `.env.example` and configure your Supabase credentials.
+
+```bash
+npm run dev
+```
+
+## Developer
+
+Melina Hadi
+
+GitHub: [melinahadi](https://github.com/melinahadi)
