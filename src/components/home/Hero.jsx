@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroImage from "../../assets/images/hero/6.webp";
+import heroImage from "../../assets/images/hero/61.webp";
 export default function Hero() {
   return (
     <section
@@ -10,6 +10,9 @@ export default function Hero() {
       <motion.img
         src={heroImage}
         alt="فضای داخلی آرایشگاه روژان"
+        fetchPriority="high"
+        loading="eager"
+        decoding="async"
         className="absolute inset-0 w-full h-full object-cover saturate-90 brightness-90"
         style={{ objectPosition: "15% center" }}
         initial={{ scale: 1.08 }}

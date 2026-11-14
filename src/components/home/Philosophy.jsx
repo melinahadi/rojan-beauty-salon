@@ -1,7 +1,7 @@
 import Reveal from "../ui/Reveal";
 import CountUp from "../ui/CountUp";
 
-import philosophyImage from "../../assets/images/philosophy/1.webp";
+import philosophyImage from "../../assets/images/philosophy/11.webp";
 
 export default function Philosophy() {
   return (

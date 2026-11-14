@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Reveal from "../ui/Reveal";
 
-import gallery1 from "../../assets/images/gallery/1.webp";
-import gallery2 from "../../assets/images/gallery/2.webp";
-import gallery3 from "../../assets/images/gallery/3.webp";
-import gallery4 from "../../assets/images/gallery/4.webp";
-import gallery5 from "../../assets/images/gallery/5.webp";
-import gallery6 from "../../assets/images/gallery/6.webp";
+import gallery1 from "../../assets/images/gallery/11.webp";
+import gallery2 from "../../assets/images/gallery/21.webp";
+import gallery3 from "../../assets/images/gallery/31.webp";
+import gallery4 from "../../assets/images/gallery/41.webp";
+import gallery5 from "../../assets/images/gallery/51.webp";
+import gallery6 from "../../assets/images/gallery/61.webp";
 
 
 const images = [
@@ -93,6 +93,7 @@ export default function Gallery() {
                   src={img.src}
                   alt="گالری روژان"
                   loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover rounded-sm transition-transform duration-500 hover:scale-[1.04]"
                 />
               </button>

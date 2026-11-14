@@ -1,8 +1,8 @@
 import Reveal from "../ui/Reveal";
 
-import stylist1 from "../../assets/images/stylists/1.webp";
-import stylist2 from "../../assets/images/stylists/2.webp";
-import stylist3 from "../../assets/images/stylists/3.webp";
+import stylist1 from "../../assets/images/stylists/11.webp";
+import stylist2 from "../../assets/images/stylists/21.webp";
+import stylist3 from "../../assets/images/stylists/31.webp";
 
 const stylists = [
   {
