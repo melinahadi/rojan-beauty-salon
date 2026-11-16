@@ -10,14 +10,7 @@ import {
 
 import { useDashboardStats } from "../../hooks/useDashboardStats";
 import StatusPieChart from "../../components/admin/StatusPieChart";
-
-const formatNumber = (value) => {
-  const number = Number(value) || 0;
-
-  return new Intl.NumberFormat("en-US")
-    .format(number)
-    .replace(/\d/g, (digit) => "۰۱۲۳۴۵۶۷۸۹"[Number(digit)]);
-};
+import { formatPrice } from "../../lib/formatPrice";
 
 function getTotalAppointments(counts) {
   const values = Array.isArray(counts)
@@ -69,7 +62,7 @@ function StatCard({
 
           <div className="mt-4 flex flex-wrap items-baseline gap-2">
             <span className="font-display text-3xl font-medium text-charcoal sm:text-4xl">
-              {formatNumber(value)}
+              {formatPrice(value)}
             </span>
 
             {unit && <span className="text-sm text-charcoal-2">{unit}</span>}
@@ -267,7 +260,7 @@ export default function AdminDashboard() {
 
                 <div className="flex shrink-0 items-center gap-2">
                   <span className="rounded-lg bg-rose-50 px-3 py-2 text-xs font-medium text-rose-deep">
-                    {formatNumber(customer.count)} نوبت
+                    {formatPrice(customer.count)} نوبت
                   </span>
 
                   <ArrowUpLeft

@@ -4,13 +4,14 @@ html {
 }
 
 @theme {
-    --color-cream: #FBF7F2;
-    --color-cream-2: #F1E6DF;
-    --color-charcoal: #2A2521;
-    --color-charcoal-2: #3D3630;
-    --color-rose: #C17F82;
-    --color-rose-deep: #9C5A5E;
-    --color-gold: #AD8A54;
+    --color-cream: #FBF8F4;
+    --color-cream-2: #F2EBE5;
+    --color-charcoal: #292321;
+    --color-charcoal-2: #786D67;
+    --color-rose: #B98688;
+    --color-rose-deep: #A66C70;
+    --color-gold: #B69A70;
+    --color-gold-soft: #D8C29B;
     --font-display: "Noto Naskh Arabic", serif;
     --font-body: "Vazirmatn", sans-serif;
 }
@@ -36,4 +37,617 @@ body {
 
 .admin-datepicker input::placeholder {
     font-family: var(--font-body);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   ROJAN — Modern editorial luxury visual layer
+   Presentation-only overrides. Booking/auth/data logic unchanged.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+    color-scheme: light;
+    --rojan-ink: #292321;
+    --rojan-muted: #786d67;
+    --rojan-paper: #fbf8f4;
+    --rojan-soft: #f2ebe5;
+    --rojan-rose: #a66c70;
+    --rojan-rose-dark: #805156;
+    --rojan-gold: #b69a70;
+    --rojan-line: rgba(54, 42, 37, .12);
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+}
+
+body {
+    background: var(--rojan-paper);
+    color: var(--rojan-ink);
+    font-feature-settings: "ss01" on;
+    -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+    background: rgba(166, 108, 112, .22);
+    color: var(--rojan-ink);
+}
+
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+button {
+    transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease, border-color .22s ease, color .22s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--rojan-rose);
+    outline-offset: 3px;
+}
+
+input,
+textarea,
+select {
+    border-radius: 12px !important;
+    border-color: rgba(54, 42, 37, .17) !important;
+    background-color: rgba(255, 255, 255, .68) !important;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--rojan-rose) !important;
+    box-shadow: 0 0 0 4px rgba(166, 108, 112, .10);
+    background: #fff !important;
+}
+
+.rounded-sm {
+    border-radius: 12px !important;
+}
+
+.rounded-2xl {
+    border-radius: 22px !important;
+}
+
+.rounded-xl {
+    border-radius: 16px !important;
+}
+
+
+/* Public navigation */
+
+header.sticky {
+    background: rgba(251, 248, 244, .88) !important;
+    border-color: rgba(54, 42, 37, .09) !important;
+    box-shadow: 0 8px 32px rgba(48, 35, 30, .045);
+    backdrop-filter: blur(18px) saturate(145%);
+}
+
+header.sticky>div {
+    min-height: 78px;
+}
+
+header.sticky a,
+header.sticky button {
+    letter-spacing: -.01em;
+}
+
+header.sticky .font-display {
+    letter-spacing: .08em;
+    position: relative;
+}
+
+header.sticky .font-display::after {
+    content: "BEAUTY STUDIO";
+    display: block;
+    margin-top: 1px;
+    color: var(--rojan-gold);
+    font: 500 8px/1.2 Arial, sans-serif;
+    letter-spacing: .28em;
+}
+
+header.sticky a[class*="bg-charcoal"] {
+    border-radius: 999px !important;
+    padding-inline: 28px;
+    box-shadow: 0 8px 20px rgba(41, 35, 33, .12);
+}
+
+
+/* Hero */
+
+section.relative.h-\[88vh\] {
+    min-height: 640px;
+    height: min(850px, calc(100svh - 78px));
+}
+
+section.relative.h-\[88vh\]>img {
+    filter: saturate(.78) contrast(1.04);
+}
+
+section.relative.h-\[88vh\]>div[class*="bg-gradient-to-t"] {
+    background: linear-gradient(0deg, rgba(24, 20, 19, .72) 0%, rgba(24, 20, 19, .12) 62%, rgba(24, 20, 19, .08) 100%) !important;
+}
+
+section.relative.h-\[88vh\]>div[class*="bg-gradient-to-l"] {
+    background: linear-gradient(270deg, rgba(32, 25, 23, .68), rgba(32, 25, 23, .20) 62%, transparent) !important;
+}
+
+section.relative.h-\[88vh\] h1 {
+    max-width: 720px;
+    font-size: clamp(2.8rem, 6vw, 5.7rem);
+    line-height: 1.25;
+    letter-spacing: -.035em;
+    text-wrap: balance;
+}
+
+section.relative.h-\[88vh\] p {
+    line-height: 2.1;
+    font-size: clamp(.95rem, 1.2vw, 1.08rem);
+}
+
+section.relative.h-\[88vh\] a {
+    border-radius: 999px !important;
+    padding: 15px 30px;
+    box-shadow: 0 12px 28px rgba(20, 15, 14, .18);
+}
+
+section.relative.h-\[88vh\] a:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Section rhythm and editorial headings */
+
+main,
+section {
+    scroll-margin-top: 100px;
+}
+
+section[id="services"],
+section[id="gallery"] {
+    background: #f1eae4 !important;
+}
+
+section[id="services"] h2,
+section[id="gallery"] h2,
+section[id="stylists"] h2,
+section h2.font-display {
+    letter-spacing: -.025em;
+    line-height: 1.5;
+    text-wrap: balance;
+}
+
+section[id="services"] a {
+    border-color: rgba(54, 42, 37, .14);
+    padding-block: 28px;
+    transition: padding .25s ease, border-color .25s ease, background .25s ease;
+}
+
+section[id="services"] a:hover {
+    padding-inline: 18px;
+    background: rgba(255, 255, 255, .42);
+    border-color: rgba(166, 108, 112, .38);
+}
+
+section[id="services"] a h3 {
+    font-size: 1.22rem;
+    font-weight: 500;
+}
+
+section[id="services"] a>div:last-child {
+    color: var(--rojan-rose-dark);
+    font-weight: 600;
+}
+
+section[id="stylists"] img,
+section[id="gallery"] img,
+section img.rounded-sm {
+    transition: transform .65s cubic-bezier(.2, .7, .2, 1), filter .4s ease;
+}
+
+section[id="stylists"] .group:hover img {
+    transform: scale(1.045);
+}
+
+section[id="stylists"] .group>div:first-child {
+    border-radius: 18px !important;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(45, 32, 27, .08);
+}
+
+section[id="gallery"] button {
+    border-radius: 16px !important;
+}
+
+section[id="gallery"] img {
+    border-radius: 16px !important;
+}
+
+section[id="gallery"] button:hover img {
+    filter: saturate(1.08);
+}
+
+section:has(blockquote) blockquote {
+    position: relative;
+    padding: 30px 20px;
+    color: #4a3b36;
+}
+
+section:has(blockquote) blockquote::before {
+    content: "“";
+    display: block;
+    color: var(--rojan-gold);
+    font: 4.5rem/1 Georgia, serif;
+    margin-bottom: 8px;
+}
+
+section[id="book"] {
+    background: radial-gradient(circle at 15% 10%, rgba(182, 154, 112, .18), transparent 34%), #292321 !important;
+}
+
+section[id="book"] a {
+    border-radius: 999px !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .2);
+}
+
+
+/* Booking flow */
+
+main:has(.admin-placeholder) {
+    max-width: 100%;
+}
+
+section:has(> div > h1),
+section:has(> div > form) {}
+
+body:has(a[href="/booking"]) .booking-shell {}
+
+section.min-h-screen {
+    background: linear-gradient(135deg, #fbf8f4 0%, #f1eae4 100%);
+}
+
+section.min-h-screen form,
+section.min-h-screen>div {
+    position: relative;
+}
+
+section.min-h-screen form button[type="submit"],
+section.min-h-screen button[type="submit"] {
+    border-radius: 999px !important;
+    box-shadow: 0 10px 24px rgba(41, 35, 33, .13);
+}
+
+section button[class*="border-rose-deep"][class*="bg-rose-deep"] {
+    box-shadow: 0 8px 22px rgba(128, 81, 86, .16);
+}
+
+section button[class*="border-charcoal/15"],
+section button[class*="border-charcoal/10"] {
+    border-radius: 16px !important;
+}
+
+section button[class*="border-charcoal/15"]:hover {
+    border-color: rgba(166, 108, 112, .48) !important;
+    background: rgba(255, 255, 255, .55);
+}
+
+
+/* Customer account and admin workspace */
+
+main.max-w-6xl,
+main.max-w-3xl {
+    padding-top: clamp(2rem, 5vw, 4rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+main.max-w-6xl>div>h1,
+main.max-w-3xl h1 {
+    letter-spacing: -.025em;
+}
+
+main.max-w-6xl .bg-cream,
+main.max-w-3xl .bg-cream,
+main.max-w-6xl [class*="bg-white"],
+main.max-w-3xl [class*="bg-white"] {
+    box-shadow: 0 12px 35px rgba(48, 35, 30, .045);
+}
+
+header.bg-charcoal {
+    background: linear-gradient(110deg, #292321, #40332e) !important;
+    box-shadow: 0 12px 32px rgba(34, 27, 24, .16);
+}
+
+header.bg-charcoal a {
+    letter-spacing: -.01em;
+}
+
+header.bg-charcoal+div nav a {
+    border-radius: 999px 999px 0 0;
+    padding-inline: 20px;
+}
+
+header.bg-charcoal+div nav a:hover {
+    background: rgba(166, 108, 112, .08);
+}
+
+main.max-w-6xl .rounded-2xl,
+main.max-w-6xl .rounded-xl,
+main.max-w-6xl .rounded-sm {
+    border-radius: 18px !important;
+}
+
+main.max-w-6xl button[class*="bg-charcoal"],
+main.max-w-6xl a[class*="bg-charcoal"] {
+    border-radius: 999px !important;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+th {
+    color: #766861;
+    font-weight: 600;
+}
+
+td,
+th {
+    border-color: rgba(54, 42, 37, .09) !important;
+}
+
+tr:hover td {
+    background: rgba(166, 108, 112, .035);
+}
+
+
+/* Dialogs, alerts and floating controls */
+
+[role="dialog"],
+[class*="fixed"][class*="inset-0"]>[class*="bg-cream"] {
+    border-radius: 22px !important;
+}
+
+a[href^="tel:"],
+a[href^="mailto:"] {
+    text-underline-offset: 4px;
+}
+
+footer#contact {
+    background: linear-gradient(135deg, #292321, #3a2e2a) !important;
+}
+
+footer#contact a:hover {
+    color: #e3c8bd !important;
+}
+
+footer#contact .font-display {
+    letter-spacing: .06em;
+}
+
+@media (max-width: 768px) {
+    header.sticky>div {
+        min-height: 66px;
+        padding-inline: 20px;
+    }
+    section.relative.h-\[88vh\] {
+        height: 76svh;
+        min-height: 570px;
+    }
+    section.relative.h-\[88vh\]>div.absolute.bottom-16 {
+        right: 22px;
+        left: 22px;
+        bottom: 48px;
+    }
+    section.relative.h-\[88vh\] h1 {
+        font-size: clamp(2.35rem, 10vw, 3.6rem);
+    }
+    section.relative.h-\[88vh\] p {
+        max-width: 36ch;
+    }
+    section[id="services"],
+    section[id="gallery"] {
+        padding-block: 4.5rem;
+    }
+    section[id="stylists"] {
+        padding-block: 4.5rem;
+    }
+    section[id="book"] {
+        padding-block: 4.5rem;
+    }
+    main.max-w-6xl,
+    main.max-w-3xl {
+        padding-inline: 18px;
+    }
+    header.bg-charcoal {
+        padding-inline: 18px;
+    }
+    header.bg-charcoal+div nav {
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    header.bg-charcoal+div nav::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+
+/* Page-specific polish */
+
+section.max-w-5xl {
+    max-width: 1120px;
+    padding: clamp(28px, 5vw, 64px) clamp(18px, 3vw, 40px);
+}
+
+section.max-w-5xl>div.grid {
+    gap: clamp(28px, 4vw, 56px);
+    align-items: start;
+}
+
+section.max-w-5xl>div.grid>div:first-child {
+    background: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(54, 42, 37, .09);
+    border-radius: 24px;
+    padding: clamp(22px, 3vw, 38px);
+    box-shadow: 0 18px 55px rgba(48, 35, 30, .055);
+}
+
+section.max-w-5xl>div.grid>div:first-child h2 {
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+section.max-w-5xl>div.grid>div:first-child button {
+    border-radius: 999px !important;
+}
+
+section.max-w-5xl>div.grid>div:first-child button:disabled {
+    cursor: not-allowed;
+}
+
+section.max-w-5xl>div.grid>div:last-child>* {
+    border: 1px solid rgba(54, 42, 37, .09);
+    border-radius: 22px !important;
+    box-shadow: 0 14px 36px rgba(48, 35, 30, .05);
+}
+
+section.min-h-screen.grid.md\:grid-cols-2>div:last-child {
+    background: linear-gradient(145deg, #fffdfa, #f4ece6) !important;
+}
+
+section.min-h-screen.grid.md\:grid-cols-2>div:last-child>div {
+    width: min(100%, 460px);
+    padding: clamp(24px, 4vw, 48px);
+    background: rgba(255, 255, 255, .72);
+    border: 1px solid rgba(54, 42, 37, .08);
+    border-radius: 26px;
+    box-shadow: 0 20px 60px rgba(48, 35, 30, .07);
+}
+
+section.max-w-3xl>div[class*="bg-cream-2"],
+section.max-w-3xl [class*="bg-cream-2"] {
+    border-radius: 16px !important;
+}
+
+main.max-w-7xl>section,
+main.max-w-7xl>div>section {
+    border-radius: 22px !important;
+}
+
+main.max-w-7xl>div>section,
+main.max-w-7xl>section {
+    box-shadow: 0 12px 34px rgba(48, 35, 30, .045);
+}
+
+main.max-w-7xl button {
+    border-radius: 12px;
+}
+
+main.max-w-7xl input,
+main.max-w-7xl select {
+    min-height: 42px;
+}
+
+main.max-w-7xl .bg-cream {
+    background: #fffdfa !important;
+}
+
+main.max-w-7xl .bg-white {
+    border: 1px solid rgba(54, 42, 37, .08);
+}
+
+
+/* ─────────────────────────────────────────────────────────────
+   Gold accent utilities (used by Hero and other sections)
+   ───────────────────────────────────────────────────────────── */
+
+
+/* Small label above a heading, with a gold hairline before it */
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.8125rem;
+    letter-spacing: 0.02em;
+    color: var(--color-gold);
+}
+
+.eyebrow::before {
+    content: "";
+    width: 2.25rem;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.8;
+}
+
+
+/* Gold hairline divider */
+
+.gold-rule {
+    width: 3rem;
+    height: 1px;
+    background: linear-gradient(to left, transparent, var(--color-gold), transparent);
+}
+
+
+/* Soft gold frame offset behind a photo */
+
+.frame-offset {
+    position: relative;
+    isolation: isolate;
+}
+
+.frame-offset::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translate(-14px, 14px);
+    border: 1px solid var(--color-gold-soft);
+    z-index: -1;
+}
+
+@media (max-width: 767px) {
+    .frame-offset::before {
+        transform: translate(-8px, 8px);
+    }
+}
+
+
+/* Buttons: refined hover, slight lift */
+
+.btn-luxe {
+    transition: background-color 0.35s cubic-bezier(0.22, 1, 0.36, 1), color 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-luxe:hover {
+    transform: translateY(-1px);
+}
+
+.btn-luxe:active {
+    transform: translateY(0);
 }

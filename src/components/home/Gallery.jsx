@@ -9,7 +9,6 @@ import gallery4 from "../../assets/images/gallery/41.webp";
 import gallery5 from "../../assets/images/gallery/51.webp";
 import gallery6 from "../../assets/images/gallery/61.webp";
 
-
 const images = [
   {
     src: gallery1,
@@ -26,12 +25,11 @@ const images = [
     mobileClass: "col-span-1 aspect-[4/5]",
     desktopClass: "md:col-span-1 md:row-span-2 md:aspect-auto",
   },
-  
-    {
-  src: gallery4,
-  mobileClass: "col-span-1 aspect-[4/5]",
-  desktopClass: "md:col-span-1 md:row-span-2 md:aspect-auto",
-},
+  {
+    src: gallery4,
+    mobileClass: "col-span-1 aspect-[4/5]",
+    desktopClass: "md:col-span-1 md:row-span-2 md:aspect-auto",
+  },
   {
     src: gallery5,
     mobileClass: "col-span-1 aspect-[4/5]",
@@ -43,7 +41,6 @@ const images = [
     desktopClass: "md:col-span-2 md:row-span-1 md:aspect-auto",
   },
 ];
-
 
 export default function Gallery() {
   const [selected, setSelected] = useState(null);
@@ -69,9 +66,9 @@ export default function Gallery() {
       <div className="max-w-6xl mx-auto px-5 md:px-8">
         <Reveal>
           <div className="max-w-xl mb-9 md:mb-14">
-            <div className="text-rose-deep text-sm mb-3">گالری</div>
+            <div className="eyebrow mb-4">گالری</div>
 
-            <h2 className="font-display text-3xl md:text-4xl">
+            <h2 className="font-display text-3xl md:text-4xl leading-snug">
               لحظاتی از فضای روژان
             </h2>
           </div>

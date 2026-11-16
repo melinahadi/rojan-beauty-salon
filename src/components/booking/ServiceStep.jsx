@@ -1,4 +1,5 @@
 import { useServices } from "../../hooks/useServices";
+import { formatPrice } from "../../lib/formatPrice";
 
 export default function ServiceStep({ selected, onSelect }) {
   const { services, loading } = useServices();
@@ -16,7 +17,7 @@ export default function ServiceStep({ selected, onSelect }) {
         می‌تونی فقط یکی رو برای این نوبت انتخاب کنی.
       </p>
 
-      <div className="space-y-3">
+      <div className="space-y-5 md:space-y-3">
         {services.map((s) => (
           <button
             key={s.id}
@@ -27,15 +28,17 @@ export default function ServiceStep({ selected, onSelect }) {
                 : "border-charcoal/15 hover:border-charcoal/35"
             }`}
           >
-            <div>
-              <h3 className="text-[17px] mb-1">{s.title}</h3>
-              <p className="text-[13.5px] text-charcoal-2">{s.description}</p>
+            <div className="mr-3">
+              <h3 className="text-[17px] mb-3 ">{s.title}</h3>
+              <p className="text-[13.5px] text-charcoal-2 mb-2 ml-5">
+                {s.description}
+              </p>
               <span className="text-[12.5px] text-charcoal-2/80">
                 حدود {s.duration_minutes} دقیقه
               </span>
             </div>
-            <div className="font-display text-rose-deep whitespace-nowrap text-[17px]">
-              {s.price.toLocaleString("fa-IR", { useGrouping: false })} ت{" "}
+            <div className="font-display font-semibold text-rose-deep whitespace-nowrap text-[17px]">
+              {formatPrice(s.price)} ت{" "}
             </div>
           </button>
         ))}
