@@ -31,7 +31,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
           className="eyebrow font-extrabold text-3xl mt-7 text-gold-soft mb-5"
         >
-          آرایشگاه زنانه · تهران
+          روژان استودیو · تهران
         </motion.div>
 
         <motion.h3

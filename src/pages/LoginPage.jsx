@@ -7,10 +7,10 @@ import { useAuth } from "../hooks/useAuth";
 import { isValidIranPhone } from "../lib/phoneAuth";
 import SEO from "../components/SEO";
 
-import loginImage from "../assets/images/login/2.webp";
+import loginImage from "../assets/images/login/21.webp";
 
 export default function LoginPage() {
-  const [mode, setMode] = useState("login");
+  const [mode, setMode] = useState("signup");
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");

@@ -29,8 +29,8 @@ export default function ServiceStep({ selected, onSelect }) {
             }`}
           >
             <div className="mr-3">
-              <h3 className="text-[17px] mb-3 ">{s.title}</h3>
-              <p className="text-[13.5px] text-charcoal-2 mb-2 ml-5">
+              <h3 className="text-[17px] mb-2 ">{s.title}</h3>
+              <p className="text-[13.5px] text-charcoal-2  ml-5">
                 {s.description}
               </p>
               <span className="text-[12.5px] text-charcoal-2/80">

@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 export default function SEO({ title, description }) {
   const fullTitle = title
     ? `${title} | روژان`
-    : "روژان | آرایشگاه زنانه ";
+    : "روژان | بیوتی سالن ";
   const desc =
     description ||
     "آرایشگاه زنانه روژان — رنگ، کوتاهی، کراتینه، شینیون عروس و مراقبت پوست، با رزرو آنلاین نوبت.";
