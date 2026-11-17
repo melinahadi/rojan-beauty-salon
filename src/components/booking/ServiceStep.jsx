@@ -30,10 +30,10 @@ export default function ServiceStep({ selected, onSelect }) {
           >
             <div className="mr-3">
               <h3 className="text-[17px] mb-2 ">{s.title}</h3>
-              <p className="text-[13.5px] text-charcoal-2  ml-5">
+              <p className="text-[11.5px] md:text-[13.5px] text-charcoal-2 ml-5">
                 {s.description}
               </p>
-              <span className="text-[12.5px] text-charcoal-2/80">
+              <span className="text-[10.5px] md:text-[12.5px] text-charcoal-2/80">
                 حدود {s.duration_minutes} دقیقه
               </span>
             </div>
