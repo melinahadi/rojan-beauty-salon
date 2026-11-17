@@ -1,4 +1,5 @@
 import { useEffect, useState, useMemo } from "react";
+import { Check, X } from "lucide-react";
 
 import { supabase } from "../../lib/supabaseClient";
 
@@ -35,7 +36,7 @@ export default function AdminAppointments() {
   const [services, setServices] = useState([]);
   const [stylists, setStylists] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("pending");
+  const [filter, setFilter] = useState("all");
   const [justUpdated, setJustUpdated] = useState(false);
   const [search, setSearch] = useState("");
   const [stylistFilter, setStylistFilter] = useState("all");
@@ -43,6 +44,7 @@ export default function AdminAppointments() {
   const [fromDate, setFromDate] = useState("");
   const [toDate, setToDate] = useState("");
   const [sortBy, setSortBy] = useState("created_desc");
+  const [feedback, setFeedback] = useState(null);
 
   const fetchAppointments = () => {
     supabase
@@ -94,7 +96,14 @@ export default function AdminAppointments() {
   }, []);
 
   const updateStatus = async (id, status) => {
+    const target = appointments.find((a) => a.id === id);
+    const customerName = target?.profiles?.full_name || "مشتری";
+
     await supabase.from("appointments").update({ status }).eq("id", id);
+
+    setFeedback({ id, status, customerName });
+    setTimeout(() => setFeedback(null), 2200);
+
     fetchAppointments();
   };
 
@@ -116,8 +125,7 @@ export default function AdminAppointments() {
       const q = search.trim();
       list = list.filter(
         (a) =>
-          a.profiles?.full_name?.includes(q) ||
-          a.profiles?.phone?.includes(q)
+          a.profiles?.full_name?.includes(q) || a.profiles?.phone?.includes(q)
       );
     }
 
@@ -141,15 +149,11 @@ export default function AdminAppointments() {
 
     switch (sortBy) {
       case "created_asc":
-        sorted.sort(
-          (a, b) => new Date(a.created_at) - new Date(b.created_at)
-        );
+        sorted.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
         break;
 
       case "created_desc":
-        sorted.sort(
-          (a, b) => new Date(b.created_at) - new Date(a.created_at)
-        );
+        sorted.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         break;
 
       case "appt_asc":
@@ -292,6 +296,36 @@ export default function AdminAppointments() {
         </div>
       </div>
 
+      {feedback && (
+        <div
+          className={`mb-4 flex items-center gap-2.5 text-[13.5px] border rounded-sm px-4 py-3 transition-all ${
+            feedback.status === "confirmed"
+              ? "bg-rose-deep/10 text-rose-deep border-rose-deep/30"
+              : "bg-charcoal/5 text-charcoal-2 border-charcoal/20"
+          }`}
+        >
+          <span
+            className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full ${
+              feedback.status === "confirmed"
+                ? "bg-rose-deep text-cream"
+                : "bg-charcoal/70 text-cream"
+            }`}
+          >
+            {feedback.status === "confirmed" ? (
+              <Check size={15} strokeWidth={2.4} />
+            ) : (
+              <X size={15} strokeWidth={2.4} />
+            )}
+          </span>
+
+          <span>
+            {feedback.status === "confirmed"
+              ? `نوبت ${feedback.customerName} تأیید شد.`
+              : `نوبت ${feedback.customerName} لغو شد.`}
+          </span>
+        </div>
+      )}
+
       {justUpdated && (
         <div className="mb-4 text-[13px] text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-sm px-3 py-2">
           لیست نوبت‌ها به‌روزرسانی شد
@@ -360,15 +394,17 @@ export default function AdminAppointments() {
                   <>
                     <button
                       onClick={() => updateStatus(a.id, "confirmed")}
-                      className="px-4 py-2 text-[13px] bg-emerald-600 text-white rounded-sm hover:bg-emerald-700 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 text-[13px] bg-rose-deep text-cream rounded-sm hover:bg-[#7f4448] transition-colors"
                     >
+                      <Check size={14} strokeWidth={2.2} />
                       تأیید
                     </button>
 
                     <button
                       onClick={() => updateStatus(a.id, "cancelled")}
-                      className="px-4 py-2 text-[13px] border border-red-200 text-red-700 rounded-sm hover:bg-red-50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 text-[13px] border border-charcoal/20 text-charcoal-2 rounded-sm hover:border-rose-deep hover:text-rose-deep transition-colors"
                     >
+                      <X size={14} strokeWidth={2.2} />
                       لغو
                     </button>
                   </>
@@ -378,15 +414,17 @@ export default function AdminAppointments() {
                   <>
                     <button
                       onClick={() => updateStatus(a.id, "completed")}
-                      className="px-4 py-2 text-[13px] bg-charcoal text-cream rounded-sm hover:bg-rose-deep transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 text-[13px] bg-charcoal text-cream rounded-sm hover:bg-rose-deep transition-colors"
                     >
+                      <Check size={14} strokeWidth={2.2} />
                       انجام شد
                     </button>
 
                     <button
                       onClick={() => updateStatus(a.id, "cancelled")}
-                      className="px-4 py-2 text-[13px] border border-red-200 text-red-700 rounded-sm hover:bg-red-50 transition-colors"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 text-[13px] border border-charcoal/20 text-charcoal-2 rounded-sm hover:border-rose-deep hover:text-rose-deep transition-colors"
                     >
+                      <X size={14} strokeWidth={2.2} />
                       لغو
                     </button>
                   </>

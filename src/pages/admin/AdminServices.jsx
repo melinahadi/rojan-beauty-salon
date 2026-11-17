@@ -15,11 +15,11 @@ export default function AdminServices() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-8 gap-4">
         <h1 className="font-display text-2xl">مدیریت خدمات</h1>
         <button
           onClick={() => setCreating(true)}
-          className="bg-charcoal text-cream px-5 py-2.5 text-sm hover:bg-rose-deep transition-colors"
+          className="bg-charcoal text-cream px-5 py-2.5 text-sm hover:bg-rose-deep transition-colors whitespace-nowrap"
         >
           + خدمت جدید
         </button>
@@ -34,25 +34,26 @@ export default function AdminServices() {
           {services.map((s) => (
             <div
               key={s.id}
-              className="bg-cream border border-charcoal/10 rounded-sm p-5 flex items-center justify-between gap-4"
+              className="bg-cream border border-charcoal/10 rounded-sm p-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
             >
-              <div>
+              <div className="min-w-0">
                 <h3 className="text-[15px] mb-1">{s.title}</h3>
                 <p className="text-[13px] text-charcoal-2">
                   {s.price.toLocaleString("fa-IR", { useGrouping: false })}{" "}
                   تومان — حدود {s.duration_minutes} دقیقه
                 </p>
               </div>
-              <div className="flex gap-2 shrink-0">
+
+              <div className="grid grid-cols-2 gap-3 md:flex md:shrink-0">
                 <button
                   onClick={() => setEditing(s)}
-                  className="px-4 py-2 text-[13px] border border-charcoal/20 rounded-sm hover:border-charcoal/40 transition-colors"
+                  className="px-2.5 py-1.5 md:px-4 md:py-2 text-[12px] md:text-[13px] whitespace-nowrap border border-charcoal/20 rounded-sm hover:border-charcoal/40 transition-colors"
                 >
                   ویرایش
                 </button>
                 <button
                   onClick={() => setDeleting(s)}
-                  className="px-4 py-2 text-[13px] border border-red-200 text-red-700 rounded-sm hover:bg-red-50 transition-colors"
+                  className="px-2.5 py-1.5 md:px-4 md:py-2 text-[12px] md:text-[13px] whitespace-nowrap border border-red-200 text-red-700 rounded-sm hover:bg-red-50 transition-colors"
                 >
                   حذف
                 </button>
