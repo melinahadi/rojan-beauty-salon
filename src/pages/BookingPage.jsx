@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "../lib/supabaseClient";
@@ -31,6 +31,14 @@ export default function BookingPage() {
   const preselectedServiceId = searchParams.get("service");
   const { services } = useServices();
 
+  // هر بار که مرحله عوض می‌شود، صفحه قبل از نمایش به بالا برمی‌گردد
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  }, [step]);
+
+  // پیش‌انتخاب سرویس از لینک ?service=
   useEffect(() => {
     if (!preselectedServiceId || service) return;
 
@@ -180,7 +188,7 @@ export default function BookingPage() {
                   onSelectTime={setTime}
                 />
               )}
-              
+
               {step === 3 && (
                 <ConfirmStep
                   service={service}
