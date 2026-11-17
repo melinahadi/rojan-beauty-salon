@@ -1,5 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth";
+import ScrollToTop from "../ui/ScrollToTop";
 
 const tabs = [
   { to: "/admin", label: "داشبورد" },
@@ -59,6 +60,8 @@ export default function AdminLayout() {
       <main className="max-w-6xl mx-auto px-8 py-10">
         <Outlet />
       </main>
+
+      <ScrollToTop />
     </div>
   );
 }
